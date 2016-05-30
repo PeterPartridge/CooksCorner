@@ -1,0 +1,124 @@
+﻿@model CooksCorner1._0.Models.RecipesCreateNewViewModel
+
+@{
+    ViewBag.Title = "Recipe Share";
+}
+
+<div class="white">
+    <h2>Recipe Share</h2>
+
+    @using (Html.BeginForm("CreateNew", "Recipe", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+              
+        <div class="form-horizontal">
+            <h4>Share your recipe Here</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Food Image", new { @class = "control-label col-md-2" })
+                <div>
+                    <input name="upload" id="foodImage" type="file" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Cuisine, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3 ">
+                  @Html.DropDownList("CusineId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.DiffcultyId, "", new { @class = "text-danger" })
+                    
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Difficulty, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-3">
+                    @Html.DropDownList("DiffcultyId", String.Empty)
+                    @Html.ValidationMessageFor(model => model.CusineId, "", new {@class = "text-danger"})                    
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PrepTimeHours, "Prep time in hours", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PrepTimeHours, new { htmlAttributes = new { @class = "form-control" } })
+                    <div>
+                        @Html.ValidationMessageFor(model => model.PrepTimeHours, "", new { @class = "text-danger" })
+                    </div>
+                    </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PrepTimeMins, "Prep time in minutes", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.PrepTimeMins, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PrepTimeMins, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CookingTimeHours, "Cooking time in Hours", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CookingTimeHours, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CookingTimeHours, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CookingTimeMins, "Cooking time in minutes", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CookingTimeMins, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CookingTimeMins, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Blurb, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="Peter-Ingrediants-textbox col-md-10">
+                    @Html.TextAreaFor(model => model.Blurb, new { htmlAttributes = new { @class = "form-control" } })
+                    <div>
+                        @Html.ValidationMessageFor(model => model.Blurb, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Ingrediants, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="Peter-Ingrediants-textbox col-md-10">
+                    @Html.TextAreaFor(model => model.Ingrediants, new { htmlAttributes = new { @class = "form-control" } })
+                    <div>
+                        @Html.ValidationMessageFor(model => model.Ingrediants, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Instructions, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="Peter-Instrictions-textbox col-md-10">
+                    @Html.TextAreaFor(model => model.Instructions, new { htmlAttributes = new { @class = "Peter-textbox" } })
+                    <div>
+                        @Html.ValidationMessageFor(model => model.Instructions, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>

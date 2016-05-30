@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <p>
+        <a>
+            <img src="~/Images/Company logo/Trial1.png" style="float: right; margin: -45px 460px 0px 20px; width:200px;" />
+        </a>
+        <br />
+        <br />
+    </p>
+          <p>This a website for all Cooks from novice to master for sharing recipes and food related talk.</p>
+</div>
+
+<div class="row white">
+    <div>
+@{Html.RenderAction("_RecipeFrontPage", "Home");}
+      
+
+    </div>
+</div>

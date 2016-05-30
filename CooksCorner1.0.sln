@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CooksCorner1.0", "CooksCorner1.0\CooksCorner1.0.csproj", "{DD01DE1F-151B-4FD7-AA12-711F73D43933}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CooksCorner1.0.Tests", "CooksCorner1.0.Tests\CooksCorner1.0.Tests.csproj", "{1C26232E-0C88-4E2F-8632-F78C1E52EE4D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD01DE1F-151B-4FD7-AA12-711F73D43933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD01DE1F-151B-4FD7-AA12-711F73D43933}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD01DE1F-151B-4FD7-AA12-711F73D43933}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD01DE1F-151B-4FD7-AA12-711F73D43933}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C26232E-0C88-4E2F-8632-F78C1E52EE4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C26232E-0C88-4E2F-8632-F78C1E52EE4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C26232E-0C88-4E2F-8632-F78C1E52EE4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C26232E-0C88-4E2F-8632-F78C1E52EE4D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

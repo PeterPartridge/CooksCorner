@@ -1,0 +1,138 @@
+﻿@model CooksCorner1._0.Models.EditViewModle
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<h2>Edit your recipe</h2>
+
+@using (Html.BeginForm("recipeEdit", "Recipe", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.AuthorName);
+    @Html.HiddenFor(model => model.RecipeId);
+    
+    <div class="form-horizontal">
+        <h4>Edit Your Recipe</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } }) 
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiffcultyId, "Diffculty", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+               @Html.DropDownListFor(m => m.DiffcultyId, Model.Diffculties)
+              
+                @Html.ValidationMessageFor(model => model.DiffcultyId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CusineId, "Country", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.CusineId, Model.Cusines)
+                @Html.ValidationMessageFor(model => model.CusineId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PrepTimeHours, "Prep time in hours", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PrepTimeHours, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PrepTimeHours, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PrepTimeMins, "Prep time in minutes", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PrepTimeMins, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PrepTimeMins, "", new { @class = "text-danger" })            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CookingTimeHours, "Cooking time in Hours", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CookingTimeHours, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CookingTimeHours, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CookingTimeMins, "Cooking time in minutes", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CookingTimeMins, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CookingTimeMins, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        @if (Model.Images.Any(f => f.FileType == CooksCorner1._0.Models.FileType.foodImage))
+        {
+            <div class="form-group">
+                <span class="control-label col-md-2"><strong>Current image</strong></span>
+                <div class="col-md-10"> 
+                    <img src="~/File?id=@Model.Images.First(f => f.FileType == CooksCorner1._0.Models.FileType.foodImage).FileId" alt="Please add a picture of your recipe" width="100" />
+                </div>
+            </div>
+        }
+        
+
+
+        <div class="form-group">
+            @Html.Label("PLease use this to change recipe", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="foodImage" name="upload" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Blurb, "Please tell us about your recipe.", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="Peter-Ingrediants-textbox col-md-10">
+                @Html.TextAreaFor(model => model.Blurb, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Blurb, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ingrediants, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="Peter-Ingrediants-textbox col-md-10">
+                @Html.TextAreaFor(model => model.Ingrediants, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Ingrediants, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Instructions, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="Peter-Instrictions-textbox col-md-10">
+                @Html.TextAreaFor(model => model.Instructions, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Instructions, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />               
+            </div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to Recipe Summery", "Index")
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -1,0 +1,85 @@
+﻿@model CooksCorner1._0.Models.RecipeModel
+
+<div class="row container-fluid white col-lg-12" >
+   
+    <div id="DetailsRecipe">
+        
+        <div class="PPtext-center col-md-12 col-lg-12"><h1>@Html.DisplayFor(r => r.Title)</h1></div>
+
+        @Html.HiddenFor(model => model.RecipeId, new { @readonly = true })
+
+        <div class="PPtext-center">
+            Created by @Html.DisplayFor(m => m.AuthorName).
+        </div>
+
+            <br />
+
+        <div id="printButton">
+            <img src="~/Images/Icons/print-icon-47865.png" width="20"
+                 height="20" /> print
+        </div>
+        <div class="row col-md-12 col-lg-12">
+            @if (Model.PrepTimeHours > 0)
+            {
+                <h4 class=" pptextRight col-sm-4 col-md-4 col-lg-4">Prep time is:@Html.DisplayFor(r => r.PrepTimeHours) Hours @Html.DisplayFor(r => r.PrepTimeMins) minutes</h4>
+            }
+            @if (Model.PrepTimeHours == 0)
+            {
+                <h4 class=" pptextRight col-sm-4 col-md-4 col-lg-4">Prep time is: @Html.DisplayFor(r => r.PrepTimeMins) minutes</h4>
+            }
+
+            @if (Model.CookingTimeHours > 0)
+            {
+                <h4 class=" PPtext-center col-sm-5 col-md-5 col-lg-5">Cooking time is: @Html.DisplayFor(m => m.CookingTimeMins) Minutes </h4>
+            }
+
+            @if (Model.CookingTimeHours == 0)
+            {
+
+                <h4 class=" PPtext-center col-sm-5 col-md-5 col-lg-5">Cooking time is: @Html.DisplayFor(m => m.CookingTimeMins) Minutes </h4>
+            }
+            <h4 class=" pptextRight col-sm-offset-2 col-md-offset-2 col-lg-offset-2"> Dicculty rating is @Html.DisplayFor(r => r.Difficulty.Diffculty)</h4>
+        </div>
+        <div class="col-lg-12 col-md-12">
+            <div>
+                @Html.DisplayFor(m => m.Blurb)
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-12">
+            <div class="col-md-4 col-lg-4">
+                <div>
+                    <h2>Ingediants</h2>
+                    <div style="white-space:pre-wrap;">@Html.DisplayFor(m => m.Ingrediants)</div>
+                </div>
+            </div>
+            <div class="col-md-5 col-lg-6">
+                <div>
+                    <h2 class="col-md-12 col-lg-12">Method</h2>
+                    <div style="white-space:pre-wrap;">@Html.DisplayFor(r => r.Instructions)</div>
+
+                </div>
+            </div>
+
+
+            <div class="white">
+                @if (Model.Images.Any(f => f.FileType == CooksCorner1._0.Models.FileType.foodImage))
+                {
+                    <div class=" col-md-3 col-lg-2">
+                        <img src="~/File?id=@Model.Images.First(f => f.FileType == CooksCorner1._0.Models.FileType.foodImage).FileId" alt="Recipe Image" width="196" />
+
+                    </div>
+                }
+
+            </div>
+
+
+        </div>
+
+    </div>
+  
+</div>
+
+@{Html.RenderAction("_addComment", "Recipe", new {id = Model.RecipeId });}
