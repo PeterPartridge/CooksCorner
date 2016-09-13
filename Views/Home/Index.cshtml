@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+}
+
+  
+
+<div class="jumbotron white">
+            <img src="~/Images/Company logo/Trial1.png" class="img-responsive imageMid" />
+        
+
+    <a class="btn buttonBlackGray">Share a recipe</a> <a class="btn buttonBlackGray">look at our recipes</a>
+</div>
+
+<div class="row white">
+    <div>
+@{Html.RenderAction("_RecipeFrontPage", "Home");}
+     
+
+    </div>
+</div>
+
+<div class="cookies hidden white" id="cookies">  
+    <p>This website uses cookies for authentication purposes.</p>
+    <a class="btn btn-default" id="cookiesOk">Accept cookies</a> <a href="http://www.aboutcookies.org/" class="btn btn-default">more information</a>
+</div>

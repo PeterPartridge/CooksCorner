@@ -1,0 +1,65 @@
+﻿@model CooksCorner1._0.Models.RecipeModel
+
+<br/>
+<div id="Comments">
+
+    <table class="col-md-12 col-lg-12">
+        <tr>
+            <th>User Name</th>
+
+            <th>Comment</th>
+        </tr>
+
+        @foreach (var item in Model.comments)
+        {
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td>
+                        @Html.DisplayFor(model => item.MessageTime)
+                    </td>
+                </tr>
+            </tfoot>
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.comment)
+                    </td>
+
+
+                </tr>
+            }
+        }
+    </table>
+
+    @if (User.Identity.IsAuthenticated)
+    { 
+     
+
+    <form id="commentform" method="post" action="@Url.Action("_addComment")" data-ccc-ajax="true">
+
+            <textarea id="comment"></textarea>
+
+
+            <input type="hidden" id="RecipeId" value="@Model.RecipeId" />
+
+            <br />
+            <input type="submit" value="Add comment" class="btn btn-default" />
+      
+
+    </form>
+    }
+    
+    @if (User.Identity.IsAuthenticated == false)
+    {
+        
+            <h3>To Comment on this recipe please click <a href="~/Account/Login">here </a> to log in, or click <a href="~/Account/Register">here </a>to make an account</h3>
+        
+
+    }
+</div>
+
+<br />

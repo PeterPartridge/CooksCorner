@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CooksCorner1._0.Models.RecipeModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="white">
+    <h2>Recipe browser</h2>
+
+    @*                                           Same as update taget ID in ajax *@
+    <form method="get" action="@Url.Action("Index")" data-ccs-target="#Recipes" data-ccs-ajax="true">
+        Search by Title
+        <input type="search" name="searchString" />
+        Search by coutry
+        @Html.DropDownList("CSearchString", "All")
+Search by Diffculty
+        @Html.DropDownList("DSearchString", "All")
+        <p>
+            <br/>
+            <input type="submit" value="Search" class="btn Peter-Button"/>
+        </p>
+    </form>
+
+
+    <br />
+    <p>
+        <a class="btn Peter-Button" href="~/Recipe/CreateNew">
+            Give us your recipe.
+        </a>
+    </p>
+
+
+    @Html.Partial("_RecipeSearch", Model)
+
+
+</div>

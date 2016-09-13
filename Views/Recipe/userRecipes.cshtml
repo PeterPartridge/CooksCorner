@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CooksCorner1._0.Models.RecipeModel>
+@{
+    ViewBag.Title = "userRecipes";
+}
+
+<h2>userRecipes</h2>
+
+
+<form method="post">
+    <table class="table">
+        <tr>
+
+            <th>Title</th>
+            <th>Country</th>
+            <th>Diffculty</th>
+            <th>Total cooking time</th>
+
+        </tr>
+
+
+        @foreach (var recipe in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => recipe.Title)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => recipe.Cuisine.type_of_Cusine)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => recipe.Difficulty.Diffculty)
+                </td>
+                <td>
+                    @(recipe.CookingTimeHours + recipe.PrepTimeHours) Hours
+                    @(recipe.CookingTimeMins + recipe.PrepTimeMins) Minutes
+                </td>
+
+                @*<td id="Votes">
+
+                         <ul>
+                            <li id="up" data-css-uvote="@recipe.votes"></li>
+                            <li>@Html.DisplayFor(model => recipe.TotalVote)</li>
+                             <li id="down" data-css-dvote=""></li>
+                        </ul>
+
+
+                    </td>*@
+                <td>
+                    <ul>
+                        <li>
+                            @if (recipe.AuthorName == User.Identity.Name)
+                            {
+                                @Html.ActionLink("Edit", "recipeEdit", new { id = recipe.RecipeId })
+                            }
+
+                            @Html.ActionLink("Recipe Details", "recipeDetails", new { id = recipe.RecipeId })
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        }
+    </table>
+</form>
+
+
+
+
