@@ -68,7 +68,9 @@ namespace CooksCorner1._0.Migrations
                 new DiffcultyModel {Diffculty =9 },
                 new DiffcultyModel {Diffculty =10 }
                                );
-                               
+
+            context.RecipeDB.AddOrUpdate(c => c.Title,
+                new RecipeModel { Title = "food", AuthorName = "bob", Blurb = "we love food gloriouse food", CookingTimeHours = 0, CookingTimeMins = 0, CusineId = 2, DiffcultyId = 1, Ingrediants = "food more food and even more food", Instructions = "we cook the food", PrepTimeHours = 0, PrepTimeMins = 1 });           
         }
     }
 }

@@ -10,7 +10,8 @@ namespace CooksCorner1._0.Models
     public class CooksCornerDBset : IdentityDbContext<CCUser>
     {
 
-        public CooksCornerDBset() : base ("name =DefaultConnection")
+        public CooksCornerDBset()
+            : base("name =CooksCornerConnection")
         {
 
         }

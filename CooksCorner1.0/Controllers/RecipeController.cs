@@ -112,8 +112,6 @@ namespace CooksCorner1._0.Controllers
            CusineId = recipe.CusineId,
            Cusines = new SelectList (_db.CuisineDB, "CusineId","type_of_Cusine", recipe.CusineId ),
            Diffculties = new SelectList(_db.DiffDB, "DiffcultyId", "Diffculty", recipe.DiffcultyId)
-
-
        }; 
 
             if (recipe == null)
@@ -181,10 +179,6 @@ namespace CooksCorner1._0.Controllers
             {
                 ModelState.AddModelError("", "An error has occured saving your edit");
             }
-
-            //for cusine and diffculty drop down bar's
-          //  setCusineAndDifficultyViewBag(recipe.DiffcultyId, recipe.CusineId);
-
           return View(recipe);
         }
 
@@ -212,9 +206,7 @@ namespace CooksCorner1._0.Controllers
            [Authorize]
            [ValidateAntiForgeryToken]
         public ActionResult CreateNew([Bind()] RecipeModel recipe, HttpPostedFileBase upload)
-           {
-                  
-
+           {     
                try
                {
                    if (ModelState.IsValid)
@@ -236,6 +228,7 @@ namespace CooksCorner1._0.Controllers
 
                        var user = HttpContext.GetOwinContext().Request.User.Identity.Name;
                        recipe.AuthorName = user;
+                    
                    }
                        _db.RecipeDB.Add(recipe);
                        _db.SaveChanges();
@@ -281,16 +274,7 @@ namespace CooksCorner1._0.Controllers
         [HttpGet]
            public ActionResult _addComment(int? Id)
            {
-               RecipeModel recipe = _db.RecipeDB.Include(i => i.comments).SingleOrDefault(s => s.RecipeId == Id);
-               //var comment = _db.CommentDB.OrderBy(x => x.MessageTime).Where(x => x.RecipeId == Id).ToArray().Select(x => new CommentModel 
-               //{
-               //id = x.id,
-               //MessageTime = x.MessageTime,
-               //comment = x.comment,
-               //Author = x.Author,
-               //RecipeId = x.RecipeId
-               //});
-               
+               RecipeModel recipe = _db.RecipeDB.Include(i => i.comments).SingleOrDefault(s => s.RecipeId == Id);              
               
                return PartialView(recipe);
            }

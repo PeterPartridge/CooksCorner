@@ -39,17 +39,11 @@ namespace CooksCorner1._0.Controllers
 
             int recipeMax = recipeList.Count;
 
-            int ran = new Random().Next(1, recipeMax);
+            int ran = new Random().Next(0, recipeMax);
 
-            if (ran == 0)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            var selectedRecipe = recipeList.ElementAt(ran);
 
-
-            RecipeModel recipe = _db.RecipeDB.Include(i => i.Images).SingleOrDefault(s => s.RecipeId == ran);
-
-            return PartialView(recipe);
+            return PartialView(selectedRecipe);
 
         }
 
